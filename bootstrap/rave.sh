@@ -24,9 +24,8 @@ fi
     cd $BUILD
     echo "patching rave"
     patch -p0 <<EOF
-diff -ur rave-0.6.24/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc rave-0.6.24-old/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc
 --- rave-0.6.24/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc	2015-07-03 09:10:55.075177887 +0000
-+++ rave-0.6.24-old/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc	2015-08-06 08:28:47.053053002 +0000
++++ rave-patched/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc	2015-08-06 08:28:47.053053002 +0000
 @@ -149,7 +149,7 @@
  			       const BeamSpot& beamSpot) const
  {
