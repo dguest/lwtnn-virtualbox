@@ -37,19 +37,22 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "data", "~/synced"
+  config.vm.synced_folder "data", "/home/vagrant/data"
+
+  # ssh setup
+  config.ssh.forward_agent = true
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+  config.vm.provider "virtualbox" do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    # vb.gui = true
+    # Customize the amount of memory on the VM:
+    vb.memory = 1024*10
+    vb.cpus = 4
+  end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -65,7 +68,14 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", path: "bootstrap/git.sh"
-  config.vm.provision "shell", path: "bootstrap/setup.sh"
-  config.vm.provision "shell", path: "bootstrap/delphes.sh"
+  config.vm.provision "shell", path: "bootstrap/boost.sh"
+  config.vm.provision "shell", path: "bootstrap/root.sh"
+  config.vm.provision "shell", path: "bootstrap/rave.sh"
+  config.vm.provision "shell", path: "bootstrap/local_git.sh",
+                      privileged: false
+  config.vm.provision "shell", path: "bootstrap/setup.sh",
+                      privileged: false
+  config.vm.provision "shell", path: "bootstrap/delphes.sh",
+                      privileged: false
   # config.vm.provision "shell", path: "bootstrap/plotting.sh"
 end
