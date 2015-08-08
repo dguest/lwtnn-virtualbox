@@ -23,7 +23,7 @@ fi
 (
     cd $BUILD
     echo "patching rave"
-    patch -p0 <<EOF
+    patch -lp0 <<EOF
 --- rave-0.6.24/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc	2015-07-03 09:10:55.075177887 +0000
 +++ rave-patched/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc	2015-08-06 08:28:47.053053002 +0000
 @@ -149,7 +149,7 @@
@@ -33,7 +33,7 @@ fi
 -  cout << "sigma(yy) [mu]=" << 10000.*sqrt ( beamSpotState.error().cyy() ) << endl;
 +  //  cout << "sigma(yy) [mu]=" << 10000.*sqrt ( beamSpotState.error().cyy() ) << endl;
    vector<RefCountedVertexTrack> vtContainer;
- 
+
    if (tracks.size() > 1) {
 EOF
 )
