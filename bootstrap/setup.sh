@@ -6,9 +6,9 @@ set -eu
 if [[ -d setup ]] ; then
     rm -r setup
 fi
-git clone https://github.com/dguest/setup.git
+git clone git@github.com:dguest/setup.git
+git clone git@github.com:dguest/random-tools.git
 cat <<EOF > ~vagrant/.bashrc
 SETUP=~/setup
-. \${SETUP}/work_env.sh
-. \${SETUP}/bash_tools_common.sh
+. \${SETUP}/ubox_setup.sh
 EOF
