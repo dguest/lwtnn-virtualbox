@@ -24,6 +24,17 @@ fi
     cd $BUILD
     echo "patching rave"
     patch -lp0 <<EOF
+--- rave-old/src/RaveBase/RaveEngine/src/RaveBeamSpotSingleton.cc	2015-07-08 05:57:01.248541075 -0700
++++ rave-0.6.24/src/RaveBase/RaveEngine/src/RaveBeamSpotSingleton.cc	2015-08-17 18:07:34.330876300 -0700
+@@ -21,7 +21,7 @@
+
+ void BeamSpotSingleton::set ( const rave::Ellipsoid3D & ell )
+ {
+-  cout << "here" << endl;
++  //  cout << "here" << endl;
+   myEllipsoid=ell;
+   if ( mySpot ) delete mySpot;
+   if ( !(ell.isValid()) )
 --- rave-0.6.24/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc	2015-07-03 09:10:55.075177887 +0000
 +++ rave-patched/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc	2015-08-06 08:28:47.053053002 +0000
 @@ -149,7 +149,7 @@
