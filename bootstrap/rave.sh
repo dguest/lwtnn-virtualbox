@@ -4,6 +4,7 @@ set -eu
 
 sudo apt-get install -y libclhep-dev
 sudo apt-get install -y pkg-config
+sudo apt-get install -y dos2unix
 
 BUILD=rave-build
 RAVE_FILE=rave-0.6.24
@@ -23,6 +24,8 @@ fi
 (
     cd $BUILD
     echo "patching rave"
+    dos2unix rave-0.6.24/src/RecoVertex/VertexTools/src/SequentialVertexFitter.cc
+    dos2unix rave-0.6.24/src/RaveBase/RaveEngine/src/RaveBeamSpotSingleton.cc
     patch -lp0 <<EOF
 --- rave-old/src/RaveBase/RaveEngine/src/RaveBeamSpotSingleton.cc	2015-07-08 05:57:01.248541075 -0700
 +++ rave-0.6.24/src/RaveBase/RaveEngine/src/RaveBeamSpotSingleton.cc	2015-08-17 18:07:34.330876300 -0700
