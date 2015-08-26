@@ -60,6 +60,35 @@ fi
    if ( tracks.size() < 2 )
    {
      LogError("RecoVertex/AdaptiveVertexFitter")
+--- src/RaveBase/RaveInterface/src/VertexFactory.cc	2015-08-25 20:57:22.049173051 -0700
++++ src/RaveBase/RaveInterface/src/VertexFactory.cc	2015-08-25 21:00:55.900054271 -0700
+@@ -323,7 +323,8 @@
+
+     vector < TransientVertex > tmp;
+
+-    try {
++    // try
++    {
+       // LogDebug("") << "use_bs=" << use_bs;
+       if ( use_bs && rave::BeamSpotSingleton::hasBeamSpot () )
+       {
+@@ -363,11 +364,12 @@
+           tmp = r.vertices ( ttrks );
+         }
+       }
+-    } catch ( cms::Exception & e ) {
+-      edm::LogError("rave::VertexFactory") << "when trying to fit: " << e.what();
+-    } catch ( std::exception & e ) {
+-      edm::LogError("rave::VertexFactory") << "when trying to fit: " << e.what();
+     }
++    // catch ( cms::Exception & e ) {
++    //   edm::LogError("rave::VertexFactory") << "when trying to fit: " << e.what();
++    // } catch ( std::exception & e ) {
++    //   edm::LogError("rave::VertexFactory") << "when trying to fit: " << e.what();
++    // }
+
+     if ( theVerbosity>1 )
+     {
 EOF
 )
 
