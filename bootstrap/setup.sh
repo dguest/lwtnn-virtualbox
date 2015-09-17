@@ -7,7 +7,9 @@ if [[ -d setup ]] ; then
     rm -r setup
 fi
 git clone git@github.com:dguest/setup.git
-git clone git@github.com:dguest/random-tools.git
+if [[ ! -d random-tools ]] ; then
+    git clone git@github.com:dguest/random-tools.git
+fi
 cat <<EOF > ~vagrant/.bashrc
 SETUP=~/setup
 . \${SETUP}/ubox_setup.sh

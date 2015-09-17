@@ -20,6 +20,10 @@ if [[ ! -d $BUILD/$RAVE_FILE ]] ; then
     )
 fi
 
+if [[ -f /usr/local/lib/libRaveCore.so ]] ; then
+    exit
+fi
+
 # patch cout statement in rave
 (
     cd $BUILD
