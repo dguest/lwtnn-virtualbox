@@ -2,7 +2,7 @@
 set -eu
 
 if [[ ! -d delphes ]] ; then
-    git clone git@github.com:dguest/delphes-realistic-tracking.git delphes
+    git clone git@github.com:dguest/delphes-rave.git delphes
 fi
 (
     cd delphes
