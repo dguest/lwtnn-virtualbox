@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/vivid64"
+  config.vm.box = "ubuntu/trusty64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -70,17 +70,11 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", path: "bootstrap/apt.sh"
   config.vm.provision "shell", path: "bootstrap/git.sh"
-  config.vm.provision "shell", path: "bootstrap/boost.sh"
-  config.vm.provision "shell", path: "bootstrap/root.sh"
-  config.vm.provision "shell", path: "bootstrap/rave.sh"
+  config.vm.provision "shell", path: "bootstrap/cmake-and-gcc.sh"
+  config.vm.provision "shell", path: "bootstrap/boost-and-eigen.sh"
   config.vm.provision "shell", path: "bootstrap/local_git.sh",
                       privileged: false
   config.vm.provision "shell", path: "bootstrap/setup.sh",
-                      privileged: false
-  config.vm.provision "shell", path: "bootstrap/plotting.sh"
-  config.vm.provision "shell", path: "bootstrap/ndhist.sh",
-                      privileged: false
-  config.vm.provision "shell", path: "bootstrap/delphes.sh",
                       privileged: false
   config.vm.provision "shell", inline: <<SPLASH
 #!/usr/bin/env bash
